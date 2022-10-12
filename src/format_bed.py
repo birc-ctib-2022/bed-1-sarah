@@ -28,8 +28,7 @@ def main() -> None:
     args = argparser.parse_args()
 
     # With all the options handled, we just need to do the real work
-    BED_lines = args.infile.readlines()
-    for line in BED_lines:
+    for line in args.infile:
         new_line = parse_line(line)
         print_line(new_line, args.outfile)
 
