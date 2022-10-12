@@ -27,8 +27,29 @@ def main() -> None:
     args = argparser.parse_args()
 
     # With all the options handled, we just need to do the real work
-    # FIXME: put your code here
+    
+    # Create empty table
+    table = Table()
 
+    # Add each line from the BED file to a table
+    for bed_line in args.bed:
+        new_line = parse_line(bed_line)
+        table.add_line(new_line)
+    
+    # Access the query and itterate over each line
+    for query_line in args.query:
+        # Get chrom, chromStart and chromEnd
+        new_query_line = parse_line(query_line)
+        query_chrom, query_chromStart, query_chromEnd = new_query_line.split()
+        # Get all BED lines that match crom from the query line
+        list_chrom_match = table.get_chrom(query_chrom)
+        # Itterate over the list of BED lines matching the query chromosome
+        for chrom_match in list_chrom_match:
+        # If chromStart and chromEnd match the querry, add to outfile
+            if query_chromStart <= chrom_match.chrom_start and query_chromEnd >= chrom_match.chrom_end:
+                print_line(chrom_match, args.outfile)
 
 if __name__ == '__main__':
     main()
+
+# looked at bed-1-grupo-loco when getting stuck
