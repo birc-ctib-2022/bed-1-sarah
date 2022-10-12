@@ -28,7 +28,10 @@ def main() -> None:
     args = argparser.parse_args()
 
     # With all the options handled, we just need to do the real work
-    # FIXME: put your code here
+    BED_lines = args.infile.readlines()
+    for line in BED_lines:
+        new_line = parse_line(line)
+        print_line(new_line, args.outfile)
 
 
 if __name__ == '__main__':
