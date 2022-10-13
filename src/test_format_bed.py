@@ -16,7 +16,7 @@ os.system(cmd1) #Calling our commands
 os.system(cmd2)
 
 def test_format_bed():
-    result = cmp(test_output, expected_output) #Comparing test- and expected output.
+    result = cmp(test_output, expected_output, shallow = True) #Comparing test- and expected output.
     assert result
 
 # Looked at bed-1-capibaras for inspiration.
