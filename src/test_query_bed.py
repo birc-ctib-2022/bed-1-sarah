@@ -7,13 +7,13 @@ from filecmp import cmp
 import os
 
 os.system('echo "" > data/test-output-1.bed') # Calling our command to create empty file
-os.system('python3.10 scr/query_bed.py data/large.bed data/query-1.txt -o data/test-output-1.bed') # Writing output of running query_bed.py on files to output file
+os.system('python3.10 src/query_bed.py data/large.bed data/query-1.txt -o data/test-output-1.bed') # Writing output of running query_bed.py on files to output file
 
 os.system('echo "" > data/test-output-2.bed') # Calling our command to create empty file
-os.system('python3.10 scr/query_bed.py data/large.bed data/query-2.txt -o data/test-output-2.bed') # Writing output of running query_bed.py on files to output file
+os.system('python3.10 src/query_bed.py data/large.bed data/query-2.txt -o data/test-output-2.bed') # Writing output of running query_bed.py on files to output file
 
 os.system('echo "" > data/test-output-3.bed') # Calling our command to create empty file
-os.system('python3.10 scr/query_bed.py data/large.bed data/query-3.txt -o data/test-output-3.bed') # Writing output of running query_bed.py on files to output file
+os.system('python3.10 src/query_bed.py data/large.bed data/query-3.txt -o data/test-output-3.bed') # Writing output of running query_bed.py on files to output file
 
 def test_query_bed0():
     assert cmp('data/test-output-1.bed', 'data/expected-1.txt') #Comparing test- and expected output.
