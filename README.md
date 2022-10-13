@@ -66,8 +66,19 @@ When you have implemented the tool, answer the questions below, commit it to Git
 
 How does your method for extracting features work?
 
+A table created, and filled with all BED lines from our input. Then we itterate over each query. Each query has a chrom, chromStart and chromEnd. From the table all BED lines with the same chrom as the query is extracted and put in a list. We itterate over each of the chrom-matching BED lines, and evaluate if the line describes a feature within the querry range. If it fits within the range, it is added to the output file.
+
 What is the complexity of the algorithm, as a function of the size of the two input files? When you answer this, you need to know that you can get the list of chromosomse from a `query.Table` in constant time, but it does, of course, take longer to run through all the lines in it.
+
+Query input size is n. BED file input size is m.
+All arguments are run in linear time, O(1). The table is created in linear time, O(1). Lines from the BED file are added to the table in O(m) time. The query line loop is run through in O(n) time. Inside the loop, the list of chromosome matches are added in O(m) time. The list of chromosome matches is used in another for-loop, inside the query loop. The for-loop is run through O(m) times. The algorithm takes ~ O(nm) time.
 
 Did you, at any point, exploit that our features are on single nucleotides and not larger regions?
 
+No. It only seemed appropriate to apply the assumption in query_bed.py. Here, instead of comparing chromStart and chromEnd of the query to the bed line, only chromStart could have been used as:
+query_chromStart <= chromStart <= query_chromStart +1
+But the assumption was explicitly not applied to the query function.
+
 If you did, what would it take to handle general regions?
+
+If the assumption had been applied, and we had used *query_chromStart <= chromStart <= query_chromStart +1*, it would have to be removed and replaces with *int(query_chromStart) <= chrom_match[1] and chrom_match[2] <= int(query_chromEnd)*
