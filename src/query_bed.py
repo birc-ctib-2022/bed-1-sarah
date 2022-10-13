@@ -39,17 +39,16 @@ def main() -> None:
     # Access the query and itterate over each line
     for query_line in args.query:
         # Get chrom, chromStart and chromEnd
-        new_query_line = parse_line(query_line)
-        query_chrom, query_chromStart, query_chromEnd = new_query_line.split()
-        # Get all BED lines that match crom from the query line
+        query_chrom, query_chromStart, query_chromEnd = query_line.split()
+        # Get all BED lines that match chrom from the query line
         list_chrom_match = table.get_chrom(query_chrom)
         # Itterate over the list of BED lines matching the query chromosome
         for chrom_match in list_chrom_match:
         # If chromStart and chromEnd match the querry, add to outfile
-            if query_chromStart <= chrom_match.chrom_start and query_chromEnd >= chrom_match.chrom_end:
+            if int(query_chromStart) <= chrom_match[1] and chrom_match[2] <= int(query_chromEnd):
                 print_line(chrom_match, args.outfile)
 
 if __name__ == '__main__':
     main()
 
-# looked at bed-1-grupo-loco when getting stuck
+# looked at bed-1-grupo-loco & bed-1-capibaras when getting stuck

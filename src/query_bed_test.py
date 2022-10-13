@@ -16,20 +16,25 @@ query = ['../data/query-1.txt', '../data/query-2.txt', '../data/query-3.txt']
 expected = ['../data/expected-1.txt', '../data/expected-2.txt', '../data/expected-3.txt']
 
 # List of acctual outcome for tests
-output = ['../data/test-output-1.txt', '../data/test-output-2.txt', '../data/test-output-3.txt']
+output = ['../data/test-output-1.bed', '../data/test-output-2.bed', '../data/test-output-3.bed']
 
 # Creating the outcome files for the tests with a while loop
 i = 0
 while i<3:
     cmd1 = 'echo "" >' + output[i]
-    cmd2 = 'python3.10 query_bed.py ' + bed + ' ' + query[i] + '--outfile ' + output[i]
+    cmd2 = 'python3.10 query_bed.py ' + bed + ' ' + query[i] + ' -o ' + output[i]
     os.system(cmd1) # Calling our command to create empty file
     os.system(cmd2) # Writing output of running query_bed.py on files to output file
     i+=1
 
-def test_query_bed():
-    i = 0
-    while i<3:
-        result = cmp(output[i], expected[i], shallow = True) #Comparing test- and expected output.
-        i+=1
-        assert result
+def test_query_bed0():
+    result = cmp(output[0], expected[0], shallow = True) #Comparing test- and expected output.
+    assert result
+
+def test_query_bed1():
+    result = cmp(output[1], expected[1], shallow = True) #Comparing test- and expected output.
+    assert result
+
+def test_query_bed2():
+    result = cmp(output[2], expected[2], shallow = True) #Comparing test- and expected output.
+    assert result
