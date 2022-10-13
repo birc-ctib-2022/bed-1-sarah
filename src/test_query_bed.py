@@ -7,16 +7,16 @@ from filecmp import cmp
 import os
 
 # My BED file used for tests
-bed = '../data/large.bed'
+bed = 'data/large.bed'
 
 # List of query files used for tests
-query = ['../data/query-1.txt', '../data/query-2.txt', '../data/query-3.txt']
+query = ['data/query-1.txt', 'data/query-2.txt', 'data/query-3.txt']
 
 # List of expected outcomes for tests
-expected = ['../data/expected-1.txt', '../data/expected-2.txt', '../data/expected-3.txt']
+expected = ['data/expected-1.txt', 'data/expected-2.txt', 'data/expected-3.txt']
 
 # List of acctual outcome for tests
-output = ['../data/test-output-1.bed', '../data/test-output-2.bed', '../data/test-output-3.bed']
+output = ['data/test-output-1.bed', 'data/test-output-2.bed', 'data/test-output-3.bed']
 
 # Creating the outcome files for the tests with a while loop
 i = 0
