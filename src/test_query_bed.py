@@ -4,7 +4,6 @@
 
 import pytest
 from filecmp import cmp
-from filecmp import report
 import os
 
 def test_query_bed0():
