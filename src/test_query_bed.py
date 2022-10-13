@@ -28,13 +28,13 @@ while i<3:
     i+=1
 
 def test_query_bed0():
-    result = cmp('data/test-output-1.bed', 'data/expected-1.txt', shallow = True) #Comparing test- and expected output.
+    result = cmp('data/test-output-1.bed', 'data/expected-1.txt') #Comparing test- and expected output.
     assert result
 
 def test_query_bed1():
-    result = cmp('data/test-output-2.bed', 'data/expected-2.txt', shallow = True) #Comparing test- and expected output.
+    result = cmp('data/test-output-2.bed', 'data/expected-2.txt') #Comparing test- and expected output.
     assert result
 
 def test_query_bed2():
-    result = cmp('data/test-output-3.bed', 'data/expected-3.txt', shallow = True) #Comparing test- and expected output.
+    result = cmp('data/test-output-3.bed', 'data/expected-3.txt') #Comparing test- and expected output.
     assert result
